@@ -1,0 +1,75 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto+Mono");
+
+:root {
+    --background-color: #222227;
+    --section-color: #33333c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Mono", sans-serif;
+    background-color: var(--background-color);
+}
+
+section {
+    display: flex;
+    height: 500px;
+    margin: 2em;
+    background-color: var(--section-color);
+}
+
+.nsfw-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nsfw-image {
+    filter: blur(10px);
+}
+
+.no-blur {
+    filter: blur(0px);
+}
+
+.nsfw-click-text {
+    position: absolute;
+    text-align: center;
+    text-wrap: normal;
+    padding: 0;
+    align-self: center;
+
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.hidden:not(.things-i-use-container) {
+    display: none;
+}
+
+a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:active {
+    text-decoration: none;
+}
