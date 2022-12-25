@@ -7,10 +7,10 @@ import Navbar from "./components/Navbar";
 import RailroadIDE from "./pages/projects/RailroadIDE";
 import TurtysChemistry from "./pages/projects/TurtysChemistry";
 import Brass from "./pages/projects/Brass.jsx"
+import MinecraftTutorial from "./pages/tutorials/MinecraftTutorial";
 
 export default function App() {
-    return (
-        <>
+    return (<>
             <BrowserRouter>
                 <Navbar/>
                 <Routes>
@@ -19,9 +19,9 @@ export default function App() {
                     <Route path="railroad-ide/" element={<RailroadIDE/>}/>
                     <Route path="turtys-chemistry/" element={<TurtysChemistry/>}/>
                     <Route path="brass/" element={<Brass/>}/>
+                    <Route path="/tutorials/minecraft/:version/:tutorial" element={<MinecraftTutorial/>}/>
                     <Route path="*" element={<Home/>}/>
                 </Routes>
             </BrowserRouter>
-        </>
-    );
+        </>);
 }
