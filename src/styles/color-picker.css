@@ -1,0 +1,47 @@
+main {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-picker-container {
+    width: fit-content;
+    height: fit-content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+
+    background-color: rgba(5, 5, 5, 0.1);
+
+    padding: 5em;
+}
+
+#color-picker {
+    width: 500px;
+    height: 440px;
+
+    border: 3px solid #090918;
+}
+
+.color-picker-info {
+    width: 12em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.color-picker-info-color {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid #090918;
+
+    justify-self: center;
+}

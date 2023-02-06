@@ -65,13 +65,6 @@ const projects = [
         image: todoList
     },
     {
-        name: "Rule 34 Downloader",
-        description: "An application that allows you to view and download Rule 34 images.",
-        url: "/rule34-downloader",
-        image: rule34Downloader,
-        nsfw: true
-    },
-    {
         name: "Nvidia Highlight Mover",
         description: "An application that automatically moves nvidia highlights.",
         url: "/nvidia-highlight-mover",
