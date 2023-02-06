@@ -25,68 +25,68 @@ const projects = [
     {
         name: "TurtyBot",
         description: "A multiple purpose Discord bot using JDA.",
-        url: "/turtybot",
+        url: "/projects/turtybot",
         image: turtybot
     },
     {
         name: "Railroad IDE",
         description: "An IDE built for Minecraft Modding.",
-        url: "/railroad-ide",
+        url: "/projects/railroad-ide",
         image: railroadIDE
     },
     {
         name: "Turty's Chemistry",
         description: "A Minecraft tech mod built around Chemistry.",
-        url: "/turtys-chemistry",
+        url: "/projects/turtys-chemistry",
         image: turtysChemistry
     },
     {
         name: "Slippery Mod",
         description: "A Minecraft mod that makes every block slippery.",
-        url: "/slippery-mod",
+        url: "/projects/slippery-mod",
         image: slipperyMod
     },
     {
         name: "Peas Mod",
         description: "A Minecraft mod that adds pea related things.",
-        url: "/peas-mod",
+        url: "/projects/peas-mod",
         image: peasMod
     },
     {
         name: "Better Sponges",
         description: "A Minecraft mod that improves vanilla sponges.",
-        url: "/better-sponges",
+        url: "/projects/better-sponges",
         image: betterSponges
     },
     {
         name: "Todo Application",
         description: "An application that allows you to make to-do lists.",
-        url: "/todo-application",
+        url: "/projects/todo-application",
         image: todoList
     },
     {
         name: "Rule 34 Downloader",
         description: "An application that allows you to view and download Rule 34 images.",
-        url: "/rule34-downloader",
+        url: "/projects/rule34-downloader",
         image: rule34Downloader,
         nsfw: true
     },
     {
         name: "Nvidia Highlight Mover",
         description: "An application that automatically moves nvidia highlights.",
-        url: "/nvidia-highlight-mover",
+        url: "/projects/nvidia-highlight-mover",
         image: nvidiaHighlightMover
     },
     {
         name: "Ancientology",
         description: "A community Minecraft mod that is based on Ancientology.",
-        url: "/ancientology",
+        url: "/projects/ancientology",
         image: ancientology
     },
     {
         name: "Brass",
         description: "A Mod Loader and API for Minecraft.",
-        url: "/brass",
+        url: "/projects/brass",
         image: brass
     }
 ]

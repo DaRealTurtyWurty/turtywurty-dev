@@ -1,0 +1,163 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.signup-wrapper {
+    background: #282828;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 840px;
+    height: 740px;
+    margin: 36px auto 0;
+    color: #eee;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-header {
+    display: flex;
+    gap: 21px;
+    align-items: center;
+    margin: 0;
+}
+
+.signup-logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #eee;
+    margin: 0;
+}
+
+.signup-title {
+    font-size: 22.4pt;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 0;
+}
+
+.signup-description {
+    font-size: 12.6pt;
+    color: #9a9a9a;
+}
+
+.providers-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.signup-provider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 210px;
+    border-radius: 25px;
+    border: 1px solid #3a3a3a;
+    background-color: #2a2a2a;
+    padding: 14px;
+    cursor: pointer;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.signup-provider:hover {
+    background-color: #3a3a3a;
+}
+
+.signup-provider img {
+    height: 35px;
+    max-width: 70px;
+}
+
+.signup-separator {
+    width: 95%;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.signup-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.signup-label {
+    font-size: 12.6pt;
+    color: #9a9a9a;
+}
+
+.signup-input {
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    padding: 14px;
+    background-color: #2a2a2a;
+    color: #eee;
+}
+
+.signup-input:focus {
+    outline: none;
+    border: 1px solid #5a5a7a;
+}
+
+.signup-input:-webkit-autofill, .signup-input:-webkit-autofill:hover, .signup-input:-webkit-autofill:focus, .signup-input:-webkit-autofill:active {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.signup-input[data-autocompleted] {
+    background-color: transparent !important;
+}
+
+.signup-button {
+    border: none;
+    border-radius: 5px;
+    padding: 14px;
+    background-color: #6103ee;
+    color: #eee;
+    cursor: pointer;
+}
+
+.signup-button:hover {
+    background-color: #7f3ff2;
+    color: #fff;
+}
+
+.signup-error {
+    color: #ff0000;
+    font-size: 12.6pt;
+    margin-top: 14px;
+}
+
+.signup-existing-account {
+    font-size: 12.6pt;
+    color: #9a9a9a;
+    margin-top: 28px;
+    text-align: center;
+}
+
+.signup-existing-account a {
+    color: #eee;
+    text-shadow: 0 0 4px black;
+    text-decoration: underline;
+}
+
+.signup-existing-account a:hover {
+    color: #fff;
+}
+
