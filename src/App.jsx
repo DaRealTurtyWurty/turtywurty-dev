@@ -9,6 +9,9 @@ import TurtysChemistry from "./pages/projects/TurtysChemistry";
 import Brass from "./pages/projects/Brass.jsx"
 import MinecraftTutorial from "./pages/tutorials/MinecraftTutorial";
 import ColorPicker from "./pages/util/ColorPicker";
+import Calculator from "./pages/util/Calculator";
+import PokemonBrowser from "./pages/fun/pokemon/PokemonBrowser";
+import CurrencyConvertor from "./pages/util/CurrencyConvertor";
 
 export default function App() {
     return (<>
@@ -24,6 +27,7 @@ export default function App() {
                     <Route path="/color-picker" element={<ColorPicker/>}/>
                     <Route path="/calculator" element={<Calculator/>}/>
                     <Route path="/pokemon-browser" element={<PokemonBrowser/>}/>
+                    <Route path="currency-convertor" element={<CurrencyConvertor/>}/>
                     <Route path="*" element={<Home/>}/>
                 </Routes>
             </BrowserRouter>
