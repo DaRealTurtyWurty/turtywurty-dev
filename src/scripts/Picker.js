@@ -8,7 +8,7 @@ export default class Picker {
         this.target.width = this.width;
         this.target.height = this.height;
 
-        this.ctx = this.target.getContext("2d");
+        this.ctx = this.target.getContext("2d", { willReadFrequently: true });
 
         this.pickerCircle = {x: 10, y: 10, width: 7, height: 7};
 
@@ -82,7 +82,7 @@ export default class Picker {
 
         this.target.addEventListener("mousedown", mouseDown);
         this.target.addEventListener("mousemove", mouseMove);
-        this.target.addEventListener("mousemove", this.onChangeCallback(this.getPickedColor()));
+        this.target.addEventListener("mousemove", () => this.onChangeCallback(this.getPickedColor()));
 
         document.addEventListener("mouseup", mouseUp);
     }
