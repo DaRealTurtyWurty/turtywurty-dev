@@ -23,6 +23,7 @@ export default function App() {
                     <Route path="/tutorials/minecraft/:version/:tutorial" element={<MinecraftTutorial/>}/>
                     <Route path="/color-picker" element={<ColorPicker/>}/>
                     <Route path="/calculator" element={<Calculator/>}/>
+                    <Route path="/pokemon-browser" element={<PokemonBrowser/>}/>
                     <Route path="*" element={<Home/>}/>
                 </Routes>
             </BrowserRouter>
