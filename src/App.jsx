@@ -19,15 +19,15 @@ export default function App() {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="turtybot/" element={<TurtyBot/>}/>
-                    <Route path="railroad-ide/" element={<RailroadIDE/>}/>
-                    <Route path="turtys-chemistry/" element={<TurtysChemistry/>}/>
-                    <Route path="brass/" element={<Brass/>}/>
+                    <Route path="/turtybot" element={<TurtyBot/>}/>
+                    <Route path="/railroad-ide" element={<RailroadIDE/>}/>
+                    <Route path="/turtys-chemistry" element={<TurtysChemistry/>}/>
+                    <Route path="/brass" element={<Brass/>}/>
                     <Route path="/tutorials/minecraft/:version/:tutorial" element={<MinecraftTutorial/>}/>
                     <Route path="/color-picker" element={<ColorPicker/>}/>
                     <Route path="/calculator" element={<Calculator/>}/>
                     <Route path="/pokemon-browser" element={<PokemonBrowser/>}/>
-                    <Route path="currency-convertor" element={<CurrencyConvertor/>}/>
+                    <Route path="/currency-convertor" element={<CurrencyConvertor/>}/>
                     <Route path="*" element={<Home/>}/>
                 </Routes>
             </BrowserRouter>
