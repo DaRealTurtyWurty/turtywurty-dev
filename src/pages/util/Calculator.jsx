@@ -1,5 +1,5 @@
 import "../../styles/calculator.css";
-import {useReducer} from "react";
+import {useReducer, useState} from "react";
 
 const ACTIONS = {
     ADD_NUMBER: 'ADD_NUMBER',
@@ -29,6 +29,18 @@ function evaluate({previousOperand, currentOperand, operation}) {
         case "÷":
             result = previous / current;
             break;
+        case "log(x)":
+            result = previous + Math.log(current);
+            break;
+        case "x²":
+            result = previous + current * current;
+            break;
+        case "x³":
+            result = previous + current * current * current;
+            break;
+        case "√x":
+            result = previous + Math.sqrt(current);
+            break;
         default:
             return;
     }
@@ -44,9 +56,9 @@ function formatOperand(operand) {
     if (operand == null) return;
 
     const [integer, decimal] = operand.toString().split(".");
-    if (decimal == null) return INTEGER_FORMATTER.format(integer);
+    if (decimal == null) return INTEGER_FORMATTER.format(parseFloat(integer));
 
-    return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
+    return `${INTEGER_FORMATTER.format(parseInt(integer))}.${decimal}`;
 }
 
 function reducer(state, {type, payload}) {
@@ -59,7 +71,7 @@ function reducer(state, {type, payload}) {
             }
 
             if (payload.number === "0" && state.currentOperand === "0") return state;
-            if (payload.number === "." && state.currentOperand != null && state.currentOperand.includes(".")) return state;
+            if (payload.number === "." && state.currentOperand != null && state.currentOperand.toString().includes(".")) return state;
 
             return {
                 ...state, currentOperand: `${state.currentOperand || ""}${payload.number}`
@@ -111,6 +123,51 @@ function reducer(state, {type, payload}) {
 
 export default function Calculator() {
     const [{currentOperand, previousOperand, operation}, dispatch] = useReducer(reducer, {});
+    const [programmerMode, setProgrammerMode] = useState(false);
+
+    const DEFAULT_BUTTONS = (<>
+        <button className="span-two" onClick={() => dispatch({type: ACTIONS.CLEAR})}>AC</button>
+        <button onClick={() => dispatch({type: ACTIONS.DELETE})}>DEL</button>
+        <OperationButton operation="÷" dispatch={dispatch}/>
+        <DigitButton number={1} dispatch={dispatch}/>
+        <DigitButton number={2} dispatch={dispatch}/>
+        <DigitButton number={3} dispatch={dispatch}/>
+        <OperationButton operation="*" dispatch={dispatch}/>
+        <DigitButton number={4} dispatch={dispatch}/>
+        <DigitButton number={5} dispatch={dispatch}/>
+        <DigitButton number={6} dispatch={dispatch}/>
+        <OperationButton operation="+" dispatch={dispatch}/>
+        <DigitButton number={7} dispatch={dispatch}/>
+        <DigitButton number={8} dispatch={dispatch}/>
+        <DigitButton number={9} dispatch={dispatch}/>
+        <OperationButton operation="-" dispatch={dispatch}/>
+        <DigitButton number="." dispatch={dispatch}/>
+        <DigitButton number={0} dispatch={dispatch}/>
+        <button className="span-two" onClick={() => dispatch({type: ACTIONS.EVALUATE})}>=</button>
+    </>);
+
+    const PROGRAMMER_BUTTONS = (<>
+        <button className="span-two" onClick={() => dispatch({type: ACTIONS.CLEAR})}>AC</button>
+        <button onClick={() => dispatch({type: ACTIONS.DELETE})}>DEL</button>
+        <OperationButton operation="log(x)" dispatch={dispatch}/>
+        <DigitButton number={1} dispatch={dispatch}/>
+        <DigitButton number={2} dispatch={dispatch}/>
+        <DigitButton number={3} dispatch={dispatch}/>
+        <OperationButton operation="x²" dispatch={dispatch}/>
+        <DigitButton number={4} dispatch={dispatch}/>
+        <DigitButton number={5} dispatch={dispatch}/>
+        <DigitButton number={6} dispatch={dispatch}/>
+        <OperationButton operation="x³" dispatch={dispatch}/>
+        <DigitButton number={7} dispatch={dispatch}/>
+        <DigitButton number={8} dispatch={dispatch}/>
+        <DigitButton number={9} dispatch={dispatch}/>
+        <OperationButton operation="√x" dispatch={dispatch}/>
+        <DigitButton number="." dispatch={dispatch}/>
+        <DigitButton number={0} dispatch={dispatch}/>
+        <button className="span-two" onClick={() => dispatch({type: ACTIONS.EVALUATE})}>=</button>
+    </>);
+
+    const [buttons, setButtons] = useState(DEFAULT_BUTTONS);
 
     return <main>
         <div className="calculator">
@@ -118,25 +175,13 @@ export default function Calculator() {
                 <div className="previous-operand">{formatOperand(previousOperand)} {operation}</div>
                 <div className="current-operand">{formatOperand(currentOperand)}</div>
             </div>
-            <button className="span-two" onClick={() => dispatch({type: ACTIONS.CLEAR})}>AC</button>
-            <button onClick={() => dispatch({type: ACTIONS.DELETE})}>DEL</button>
-            <OperationButton operation="÷" dispatch={dispatch}/>
-            <DigitButton number={1} dispatch={dispatch}/>
-            <DigitButton number={2} dispatch={dispatch}/>
-            <DigitButton number={3} dispatch={dispatch}/>
-            <OperationButton operation="*" dispatch={dispatch}/>
-            <DigitButton number={4} dispatch={dispatch}/>
-            <DigitButton number={5} dispatch={dispatch}/>
-            <DigitButton number={6} dispatch={dispatch}/>
-            <OperationButton operation="+" dispatch={dispatch}/>
-            <DigitButton number={7} dispatch={dispatch}/>
-            <DigitButton number={8} dispatch={dispatch}/>
-            <DigitButton number={9} dispatch={dispatch}/>
-            <OperationButton operation="-" dispatch={dispatch}/>
-            <DigitButton number="." dispatch={dispatch}/>
-            <DigitButton number={0} dispatch={dispatch}/>
-            <button className="span-two" onClick={() => dispatch({type: ACTIONS.EVALUATE})}>=</button>
+            {buttons}
         </div>
+        <button onClick={() => {
+            setProgrammerMode(!programmerMode);
+            setButtons(programmerMode ? PROGRAMMER_BUTTONS : DEFAULT_BUTTONS);
+        }} className="programmer-mode">🔣
+        </button>
     </main>;
 }
 
