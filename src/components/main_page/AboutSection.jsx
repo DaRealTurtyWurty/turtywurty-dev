@@ -15,8 +15,8 @@ const programmingStartDate = new Date(2016, 10, 25);
 
 export default function AboutSection() {
     function handleAge() {
-        var years = dateDifference(Date.now(), myBirthday);
-        var toWord = toWords(years);
+        let years = dateDifference(Date.now(), myBirthday);
+        let toWord = toWords(years);
         return `${aOrAn(toWord).replace(toWord, "")} ${years}`;
     }
 
@@ -27,8 +27,8 @@ export default function AboutSection() {
     const [age, setAge] = React.useState(handleAge());
     const [programmingStart, setProgrammingStart] = React.useState(handleProgrammingStart());
 
-    var time = new Date();
-    var secondsRemaining = (60 - time.getSeconds()) * 1000;
+    let time = new Date();
+    let secondsRemaining = (60 - time.getSeconds()) * 1000;
     setTimeout(function () {
         setInterval(function () {
             setAge(handleAge());
@@ -47,12 +47,12 @@ export default function AboutSection() {
     return (
         <section className="about">
             <div className="top">
-                <img src={meImage} className="me-image"/>
+                <img src={meImage} className="me-image" alt="" />
                 <div className="about-description">
                     <h1 className="about-title">Hi, I'm TurtyWurty! 👋</h1>
                     <p className="about-intro"><strong className="typewritten">{text}</strong><Cursor cursorStyle="_"/>
                     </p>
-                    <p>I am <strong>{age} year old</strong> from the UK <img src={ukFlag} width={35}/>, who started
+                    <p>I am <strong>{age} year old</strong> from the UK <img src={ukFlag} width={35} alt=""/>, who started
                         programming <strong>{programmingStart} years ago</strong>!</p>
                 </div>
                 <Wave/>

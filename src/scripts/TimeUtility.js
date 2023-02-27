@@ -1,6 +1,6 @@
 export function dateDifference(date0, date1) {
-    var difference = date0 - date1;
-    var date = new Date(difference);
+    let difference = date0 - date1;
+    let date = new Date(difference);
     return Math.abs(date.getUTCFullYear() - 1970);
 }
 
