@@ -1,7 +1,5 @@
 import SoftwareItem from "./SoftwareItem";
 
-import '../../styles/software.css';
-
 import eclipse from "../../assets/eclipse.svg";
 import vscode from "../../assets/vscode.svg";
 import visualStudio from "../../assets/visual_studio.svg";
@@ -79,6 +77,8 @@ const softwares = [
 ]
 
 export default function SoftwareSection() {
+    require("../../styles/software.css");
+
     return (
         <section className="software">
             <h1 className="software-title">Software</h1>

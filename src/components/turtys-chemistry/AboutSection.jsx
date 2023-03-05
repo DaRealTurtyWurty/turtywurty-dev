@@ -1,8 +1,8 @@
-import "../../styles/turtys-chemistry-about.css";
-
 import turtysChemistry from "../../assets/turtys-chemistry.png";
 
 export default function AboutSection() {
+    require("../../styles/turtys-chemistry-about.css");
+
     return (
         <section className="turtys-chemistry-section">
             <h1 className="turtys-chemistry-title">Turty's Chemistry</h1>

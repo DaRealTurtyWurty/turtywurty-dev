@@ -1,15 +1,15 @@
-import {useEffect, useState} from "react";
+import {cloneElement, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 
 import {replaceMarkdown} from "../../scripts/StringUtility";
 
-import data from "E:/turtywurty-dev/src/templates/modding_tutorial.json";
-
-import {MathExpression} from "../../components/MathExpression";
-import {Warning} from "../../components/Warning";
+import ReactSpoiler from "react-spoiler";
+import {CodeBlock, CopyBlock, dracula} from "react-code-blocks";
 
 export default function MinecraftTutorial() {
+    require("../../styles/minecraft-tutorial.css");
+
     const navigate = useNavigate();
 
     const {version, tutorial} = useParams();
@@ -24,13 +24,11 @@ export default function MinecraftTutorial() {
             .catch(err => {
                 console.error(err);
                 setError(true);
-                navigate("/404");
             });
 
-    }, [version, tutorial]);
+    }, [version, tutorial, navigate]);
 
     if (error) {
-        console.log("error");
         navigate("../../../../404");
         return;
     }
@@ -39,13 +37,36 @@ export default function MinecraftTutorial() {
         return <h1>Loading...</h1>;
     }
 
-    return (<div>
-        <h1>{content.title}</h1>
-        <p>{content.description}</p>
-        <p>Created at: {content.createdAt.toDateString()}</p>
-        <p>Tags: {content.tags.join(", ")}</p>
-        <p>Author: {content.author}</p>
-        {content.content}
+    const dateOptions = {
+        weekday: "long",
+        month: "long",
+        year: "numeric",
+        day: "numeric"
+    }
+
+    return (<div className="minecraft-tutorial">
+        <main>
+            <header>
+                <h1>{content.title}</h1>
+                <p>{content.description}</p>
+                <p>Created at: {content.createdAt.toLocaleDateString("en-GB", dateOptions)}</p>
+                <div className="tag-container">
+                    <p>Tags:</p>
+                    <ul className="tags">
+                        {content.tags.map(tag => tag.toString()).map(tag => <li key={tag}>{tag}</li>)}
+                    </ul>
+                </div>
+                <div className="author-container">
+                    <p>Author:</p>
+                    <img className="author-profile" src={`https://crafatar.com/avatars/${content.author.uuid}?size=32&overlay=true`} alt="" />
+                    <p>{content.author.name}</p>
+                </div>
+            </header>
+            <p className="version-label">{version}</p>
+            <div className="content">
+                {content.content}
+            </div>
+        </main>
     </div>);
 }
 
@@ -61,7 +82,6 @@ function deserialize(json) {
 }
 
 function deserializeItem(item) {
-    console.log(item);
     if (!item.type) {
         return replaceMarkdown(item);
     }
@@ -71,12 +91,28 @@ function deserializeItem(item) {
         case "paragraph":
             return <p style={style}>{replaceMarkdown(item.content)}</p>;
         case "code":
-            // check if the language is specified
+            let language = item.language || "text";
             if (item.language) {
-                return <pre><code className={`language-${item.language}`} style={style}>{item.content}</code></pre>;
+                language = item.language.toLowerCase().trim();
             }
 
-            return <pre><code style={style}>{item.content}</code></pre>;
+            if(item["is-copy"]) {
+                return <CopyBlock
+                    text={item.content}
+                    language={language}
+                    showLineNumbers={item["show-line-numbers"] || true}
+                    theme={dracula}
+                    wrapLines
+                />;
+            } else {
+                return <CodeBlock
+                    text={item.content}
+                    language={language}
+                    showLineNumbers={item["show-line-numbers"] || true}
+                    theme={dracula}
+                    wrapLines
+                />;
+            }
         case "image":
             return <img src={item.content} alt={item.alt || ""} title={item.alt || ""} style={style}/>;
         case "heading2":
@@ -95,7 +131,18 @@ function deserializeItem(item) {
             let list = item.content.map(i => {
                 let element = deserializeItem(i);
                 let listItem = <li key={element.id}>{deserializeItem(element)}</li>;
-                if (i.style) listItem.props.style = i.style;
+
+                let props = { ...listItem.props };
+                if (i.style)
+                    props.style = i.style;
+
+                if(i["list-style"]) {
+                    props.className += ` list-style-${i["list-style"]}`;
+                }
+
+                Object.preventExtensions(props);
+                listItem = cloneElement(listItem, props);
+
                 return listItem;
             });
             return item.ordered ? <ol style={style}>{list}</ol> : <ul style={style}>{list}</ul>;
@@ -122,7 +169,7 @@ function deserializeItem(item) {
         case "error":
             return <div className="error" style={style}>{deserializeItem(item.content)}</div>;
         case "spoiler":
-            return <div className="spoiler" style={style}>{deserializeItem(item.content)}</div>;
+            return <ReactSpoiler style={style} blur={10} hoverBlur={5} className="spoiler">{deserializeItem(item.content)}</ReactSpoiler>;
         case "embed":
             return <iframe
                 src={item.content.startsWith ? item.content : `https://www.youtube.com/embed/${item.content}`}
@@ -137,6 +184,8 @@ function deserializeItem(item) {
             return <a href={item.content} download style={style}>{item.alt || item.content}</a>;
         case "line-separator":
             return <hr style={style}/>;
+        case "blink":
+            return <div className="blink" style={style}>{deserializeItem(item.content)}</div>;
         case "string":
             return replaceMarkdown(item.content);
         default:

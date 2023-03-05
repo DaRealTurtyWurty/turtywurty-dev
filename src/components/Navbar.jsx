@@ -2,9 +2,10 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 import icon from '../assets/icon.png';
-import "../styles/navbar.css";
 
 export default function Navbar() {
+    require("../styles/navbar.css");
+
     function handleHamburger() {
         let popout = document.querySelector(".navbar-popout");
         if (popout.classList.contains("open")) {

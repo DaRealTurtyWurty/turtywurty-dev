@@ -1,5 +1,3 @@
-import "../../styles/projects.css";
-
 import ProjectItem from "./ProjectItem";
 
 import turtywurtyDev from "../../assets/me.png";
@@ -10,7 +8,6 @@ import slipperyMod from "../../assets/slippery-mod.png";
 import peasMod from "../../assets/peas-mod.png";
 import betterSponges from "../../assets/better-sponges.png";
 import todoList from "../../assets/todo-list.png";
-import rule34Downloader from "../../assets/nsfw/rule34-downloader.png";
 import nvidiaHighlightMover from "../../assets/nvidia.svg";
 import ancientology from "../../assets/ancientology.png";
 import brass from "../../assets/brass.png";
@@ -85,6 +82,8 @@ const projects = [
 ]
 
 export default function ProjectsSection() {
+    require("../../styles/projects.css");
+
     return (
         <section className="projects">
             <h1 className="projects-title">Projects</h1>

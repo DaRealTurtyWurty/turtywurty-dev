@@ -1,8 +1,8 @@
-import "../../styles/brass-about.css";
-
 import brass from "../../assets/brass.png";
 
 export default function AboutSection() {
+    require("../../styles/brass-about.css");
+
     return (
         <section className="brass-section">
             <h1 className="brass-title">Brass</h1>

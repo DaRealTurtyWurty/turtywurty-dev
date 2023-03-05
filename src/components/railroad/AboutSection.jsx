@@ -1,9 +1,9 @@
-import "../../styles/railroad-about.css";
-
 import logo from "../../assets/railroad-ide.png";
 import image from "../../assets/railroad-image.png";
 
 export default function AboutSection() {
+    require("../../styles/railroad-about.css");
+
     return (
         <section className="railroad-section">
             <div className="railroad-header">

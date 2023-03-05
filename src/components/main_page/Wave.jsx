@@ -1,6 +1,6 @@
-import "../../styles/wave.css";
-
 export default function Wave() {
+    require("../../styles/wave.css");
+
     return (
         <div className="wave-holder">
             <div className="ocean">

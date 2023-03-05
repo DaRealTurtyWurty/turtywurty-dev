@@ -1,4 +1,3 @@
-import "../../styles/frameworks.css";
 import FrameworkItem from "./FrameworkItem";
 
 import minecraftForge from "../../assets/minecraft_forge.svg";
@@ -111,6 +110,8 @@ const frameworks = [
 ]
 
 export default function FrameworksSection() {
+    require("../../styles/frameworks.css");
+
     return (
         <section className="frameworks">
             <h1 className="frameworks-title">Frameworks</h1>

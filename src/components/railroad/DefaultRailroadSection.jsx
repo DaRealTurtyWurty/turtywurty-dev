@@ -1,6 +1,6 @@
-import "../../styles/railroad-section.css";
-
 export default function DefaultRailroadSection(props) {
+    require("../../styles/railroad-section.css");
+
     const {title, image, description} = props;
     return (
         <section className="railroad-section">

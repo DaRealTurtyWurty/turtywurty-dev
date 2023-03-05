@@ -1,6 +1,6 @@
-import "../../styles/railroad-contributors.css";
-
 export default function ContributorsSection() {
+    require("../../styles/railroad-contributors.css");
+
     const users = [
         {
             name: "DaRealTurtyWurty",

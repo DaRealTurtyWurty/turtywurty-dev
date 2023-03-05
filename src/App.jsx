@@ -6,7 +6,7 @@ import TurtyBot from "./pages/projects/TurtyBot";
 import Navbar from "./components/Navbar";
 import RailroadIDE from "./pages/projects/RailroadIDE";
 import TurtysChemistry from "./pages/projects/TurtysChemistry";
-import Brass from "./pages/projects/Brass.jsx"
+import Brass from "./pages/projects/Brass"
 import MinecraftTutorial from "./pages/tutorials/MinecraftTutorial";
 import ColorPicker from "./pages/util/ColorPicker";
 import Calculator from "./pages/util/Calculator";

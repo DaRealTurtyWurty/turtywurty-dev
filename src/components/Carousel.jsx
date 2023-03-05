@@ -1,9 +1,9 @@
-import "../styles/carousel.css";
-
 import arrow from "../assets/down-arrow.svg";
 import {useState} from "react";
 
 export default function Carousel(props) {
+    require("../styles/carousel.css");
+
     const {content} = props;
 
     const [currentIndex, setCurrentIndex] = useState(0);

@@ -1,6 +1,6 @@
-import "../../styles/brass-toolchain.css";
-
 export default function BrassLoaderSection() {
+    require("../../styles/brass-toolchain.css");
+
     return (
         <section className="toolchain-section">
             <p className="toolchain-name">Brass Loader</p>

@@ -1,8 +1,9 @@
-import "../../../styles/pokemon-browser.css";
 import Pagination from "./Pagination";
 import {useEffect, useState} from "react";
 
 export default function PokemonList({ pokemon, goToNextPage, goToPrevPage }) {
+    require("../../../styles/pokemon-browser.css");
+
     const [computedPokemon, setComputedPokemon] = useState([]);
 
     useEffect(() => {

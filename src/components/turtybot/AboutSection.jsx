@@ -1,8 +1,8 @@
 import turtybot from "../../assets/turtybot.png";
 
-import "../../styles/turtybot.css";
-
 export default function AboutSection() {
+    require("../../styles/turtybot.css");
+
     return (
         <section className="about-section">
             <h1 className="about-title">TurtyBot</h1>

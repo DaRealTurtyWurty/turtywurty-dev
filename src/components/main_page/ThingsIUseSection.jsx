@@ -1,10 +1,11 @@
-import "../../styles/things-i-use.css";
 import downArrow from "../../assets/down-arrow.svg";
 import LanguagesSection from "./LanguagesSection";
 import FrameworksSection from "./FrameworksSection";
 import SoftwareSection from "./SoftwareSection";
 
 export default function ThingsIUseSection() {
+    require("../../styles/things-i-use.css");
+
     function handleClick() {
         const thingsIUse = document.querySelector(".things-i-use-container");
         const downArrow = document.querySelectorAll(".down-arrow");

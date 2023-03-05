@@ -1,9 +1,9 @@
-import "../../styles/currency-convertor.css";
 import {useEffect} from "react";
 
 const BASE_URL = "https://api.exchangeratesapi.io/latest";
 
 export default function CurrencyConvertor() {
+    require("../../styles/currency-convertor.css");
 
     useEffect(() => {
         fetch(BASE_URL)

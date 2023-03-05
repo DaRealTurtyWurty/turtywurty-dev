@@ -3,7 +3,6 @@ import {dateDifference, hoursToMillis} from "../../scripts/TimeUtility";
 
 import meImage from "../../assets/me.png";
 import ukFlag from "../../assets/uk_flag.svg";
-import "../../styles/about.css"
 import {Cursor, useTypewriter} from "react-simple-typewriter";
 import Wave from "./Wave";
 
@@ -14,6 +13,7 @@ const myBirthday = new Date(2004, 2, 7);
 const programmingStartDate = new Date(2016, 10, 25);
 
 export default function AboutSection() {
+    require("../../styles/about.css");
     function handleAge() {
         let years = dateDifference(Date.now(), myBirthday);
         let toWord = toWords(years);

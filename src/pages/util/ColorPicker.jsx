@@ -1,9 +1,9 @@
 import {useEffect, useRef, useState} from "react";
 import Picker from "../../scripts/Picker";
 
-import "../../styles/color-picker.css";
-
 export default function ColorPicker() {
+    require("../../styles/color-picker.css");
+
     const [color, setColor] = useState({r: 0, g: 0, b: 0});
     const canvasRef = useRef(null);
 

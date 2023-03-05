@@ -1,7 +1,8 @@
-import "../../styles/turtybot-section.css";
 import NSFWImage from "../NSFWImage";
 
 export default function DefaultTurtyBotSection(props) {
+    require("../../styles/turtybot-section.css");
+
     const {title, description, image, isLeft, isNSFW} = props;
 
     return (

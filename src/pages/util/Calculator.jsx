@@ -1,4 +1,3 @@
-import "../../styles/calculator.css";
 import {useReducer, useState} from "react";
 
 const ACTIONS = {
@@ -122,6 +121,8 @@ function reducer(state, {type, payload}) {
 }
 
 export default function Calculator() {
+    require("../../styles/calculator.css");
+
     const [{currentOperand, previousOperand, operation}, dispatch] = useReducer(reducer, {});
     const [programmerMode, setProgrammerMode] = useState(false);
 

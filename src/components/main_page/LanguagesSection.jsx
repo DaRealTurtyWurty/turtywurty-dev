@@ -1,5 +1,3 @@
-import "../../styles/languages.css";
-
 import LanguageItem from "./LanguageItem";
 
 import java from "../../assets/java.svg";
@@ -47,6 +45,8 @@ const languages = [
 ]
 
 export default function LanguagesSection() {
+    require("../../styles/languages.css");
+
     return (
         <section className="languages" id="language-section">
             <h1 className="languages-title">Languages</h1>
